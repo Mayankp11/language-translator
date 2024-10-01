@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import TextInput from './TextInput';
 import LanguageSelect from './LanguageSelect';
+import './App.css';
 
 const App: React.FC = () => {
     const [text, setText] = useState<string>(''); // user input text
