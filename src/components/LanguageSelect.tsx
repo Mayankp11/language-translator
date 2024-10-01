@@ -13,10 +13,10 @@ const LanguageSelect: React.FC<LanguageSelectProps> = ({label, selectedLanguage,
         <select value={selectedLanguage} onChange={onLanguageChange}>
             <option value= "en">English</option>
             <option value= "es">Spanish</option>
-            <option value= "fr">France</option>
-            <option value= "de">Germany</option>
-            <option value= "hi">Hindi</option>
-            <option value= "mr">Marathi</option>
+            <option value= "fr">French</option>
+            <option value= "de">German</option>
+            <option value= "hi">हिन्दी</option>
+            <option value= "mr">मराठी</option>
         </select>
     </div>
   )

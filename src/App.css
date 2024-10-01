@@ -73,3 +73,11 @@ body {
     min-height: 50px; /* This will ensure the box stays visible even if the translated text is empty */
   }
   
+  .placeholder {
+    color: #aaa; /* Light gray color for the placeholder */
+    font-style: italic; /* Italicize the placeholder text */
+    position: absolute; /* Positioning the placeholder */
+    top: 10px; /* Adjust top position as needed */
+    left: 10px; /* Adjust left position as needed */
+    pointer-events: none; /* Allows clicks to go through to the box */
+}
