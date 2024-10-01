@@ -36,9 +36,9 @@ const TranslationLogic : React.FC<TranslationProps> = ({text, sourceLang,targetL
              onTranslated(''); // Clear translation if no result
          }
      } catch (error) {
-         console.error("Error translating text:", error);
-         setError('Error translating text'); // Set error message
-         onTranslated(''); // Clear the translated text on error
+      console.error("Error translating text:", error);
+      setError('Error translating text'); // Set error message
+      onTranslated(''); // Clear the translated text on error
      }
     };
 
