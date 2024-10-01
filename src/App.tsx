@@ -40,13 +40,15 @@ const App: React.FC = () => {
         <TranslationLogic
         text={text}
         sourceLang={sourceLang}
-        targetlang={targetLang}
+        targetLang={targetLang}
         onTranslated={handleTraslationResult}
         />
 
-        {/* Display Translated result */}
-        <h2>Translated text:</h2>
-        <p>{translatedText}</p>
+      {/* Display translated text in a box */}
+    <h2>Translated Text:</h2>
+    <div className="translated-box">
+      {translatedText ? translatedText : "The translated text will appear here..."}
+    </div>
     </div>
   )
 }

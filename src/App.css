@@ -61,3 +61,15 @@ body {
     display: block;
   }
   
+  .translated-box {
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    font-size: 16px;
+    color: #333;
+    min-height: 50px; /* This will ensure the box stays visible even if the translated text is empty */
+  }
+  
