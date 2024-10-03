@@ -1,3 +1,4 @@
+import { Input, Textarea } from "@chakra-ui/react";
 
 // Define the props interface for the component
 interface TextInputProps {
@@ -8,11 +9,14 @@ interface TextInputProps {
 // Define the functional component with the specified props
 const TextInput: React.FC<TextInputProps> = ({ text, onTextChange }) => {
     return (
-        <textarea
-            placeholder="Enter text to translate..."
-            value={text} // Controlled input
-            onChange={onTextChange} // Calls the provided function on change
+        <Textarea
+        placeholder="Enter text to translate..."
+        value={text} // Controlled input
+        onChange={onTextChange} // Calls the provided function on change
+        size="lg" // Set size (e.g., md, lg)
+        variant="outline" //
         />
+        
     );
 };
 
