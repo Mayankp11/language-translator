@@ -1,3 +1,4 @@
+import { Button } from "@chakra-ui/react";
 import axios from "axios";
 import { useState } from "react";
 
@@ -41,10 +42,10 @@ const TranslationLogic : React.FC<TranslationProps> = ({text, sourceLang,targetL
       onTranslated(''); // Clear the translated text on error
      }
     };
-
+    
   return (
     <div>
-        <button onClick={handleTranslate}>Translate</button>
+       <Button colorScheme='blue' onClick={handleTranslate}>Translate</Button>
         {error && <p style={{color : 'red'}}>{error}</p>}
     </div>
     
