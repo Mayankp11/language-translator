@@ -4,6 +4,7 @@ import LanguageSelect from "./components/LanguageSelect";
 import "./App.css";
 import TranslationLogic from "./services/TranslationLogic";
 import { Heading, HStack } from "@chakra-ui/react";
+import TranslatedText from "./components/TranslatedText";
 
 const App: React.FC = () => {
   const [text, setText] = useState<string>(""); // user input text
@@ -31,6 +32,7 @@ const App: React.FC = () => {
           selectedLanguage={sourceLang}
           onLanguageChange={(e) => setSourcelang(e.target.value)}
         />
+
         {/* Translation to */}
         <LanguageSelect
           label="Translate to:"
@@ -49,11 +51,7 @@ const App: React.FC = () => {
 
       {/* Display translated text in a box */}
       <h2>Translated Text:</h2>
-      <div className="translated-box">
-        {translatedText
-          ? translatedText
-          : "The translated text will appear here..."}
-      </div>
+      <TranslatedText translatedText = {translatedText}/>
     </div>
   );
 };
