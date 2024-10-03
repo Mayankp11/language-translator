@@ -11,11 +11,11 @@ const LanguageSelect: React.FC<LanguageSelectProps> = ({label, selectedLanguage,
     <Box mb={3}>
     <label>{label}</label>
     <Select
-      value={selectedLanguage}
-      onChange={onLanguageChange}
-      size="sm" // Set to smaller size
-      w="150px" // Adjust width to be smaller
+       value={selectedLanguage}
+       onChange={onLanguageChange}
+       size='md'
       mt={1}
+    
     >
       <option value="en">English</option>
       <option value="es">Spanish</option>
