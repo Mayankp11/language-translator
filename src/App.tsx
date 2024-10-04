@@ -34,7 +34,7 @@ const App: React.FC = () => {
     setTranslatedText(""); // Clear the translated text
     setSourcelang("en"); // set lang to english
     setTargetLang("es"); // set target lang to spanish
-    setError('');
+    setError("");
 
     // Simulate a delay to mimic a loading process (you can replace this with your actual refresh logic)
     setTimeout(() => {
@@ -44,7 +44,7 @@ const App: React.FC = () => {
 
   return (
     <>
-    {/* Title */}
+      {/* Title */}
       <Heading
         as="h1"
         size="4xl"
@@ -66,10 +66,10 @@ const App: React.FC = () => {
         </Highlight>
       </Heading>
       {/* -x-x-x--x-End of Title-x-x-x-x-x- */}
-
+      <h1>part two</h1>
       {/* App Container */}
       <Box
-      mt="20px"
+        mt="20px"
         p={{ base: 2, md: 4 }} // Padding: 2 on small screens, 4 on medium and larger
         bg="#f0f8ff" // Light gray background
         borderRadius="md" // Rounded corners
@@ -83,7 +83,6 @@ const App: React.FC = () => {
         margin="0 auto" // Center the Box
         color="black" //Ensure text is visible (adjust as needed)
       >
-
         {/* Main Flex container to hold all four logics */}
         <Flex
           direction={{ base: "column", md: "row" }} // Stack vertically on small screens, horizontally on medium+
@@ -93,9 +92,9 @@ const App: React.FC = () => {
           mt={5}
         >
           {/* Select from and Input Text felx container */}
-          <Flex direction="column" flex={1}  mr={{ base: 0, md: 4 }}>
+          <Flex direction="column" flex={1} mr={{ base: 0, md: 4 }}>
             {/* Box for the "Translate from" label */}
-            <Box mb={1} flex="1"  width={{ base: "100%", md: "150px" }}>
+            <Box mb={1} flex="1" width={{ base: "100%", md: "150px" }}>
               <LanguageSelect
                 label="Translate from:"
                 selectedLanguage={sourceLang}
@@ -119,13 +118,11 @@ const App: React.FC = () => {
               />
             </Box>
           </Flex>
-        {/*End of Select from and Input Text felx container */}
-
-
-          <Box mx={{ base: 0, md: 4 }} /> {/* Responsive margin: 0 on small screens, 4 on medium+ */}
-
-             {/* Translate to and Translated text felx container */}
-          <Flex direction="column" flex={1}  >
+          {/*End of Select from and Input Text felx container */}
+          <Box mx={{ base: 0, md: 4 }} />{" "}
+          {/* Responsive margin: 0 on small screens, 4 on medium+ */}
+          {/* Translate to and Translated text felx container */}
+          <Flex direction="column" flex={1}>
             {/* Box for the "Translate to" label */}
             <Box mb={1} flex="1" width={{ base: "100%", md: "150px" }}>
               <LanguageSelect
@@ -155,10 +152,9 @@ const App: React.FC = () => {
           targetLang={targetLang}
           onTranslated={handleTraslationResult}
         />
-        
+
         {/* Refresh Button */}
-        <RefreshButton onRefresh={handleRefresh} isLoading={isLoading} 
-        />
+        <RefreshButton onRefresh={handleRefresh} isLoading={isLoading} />
       </Box>
     </>
   );
