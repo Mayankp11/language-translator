@@ -1,4 +1,4 @@
-import { Box, Select } from '@chakra-ui/react'
+import { Box, FormLabel, Select } from '@chakra-ui/react'
 
 interface LanguageSelectProps {
     label : string;
@@ -9,7 +9,7 @@ interface LanguageSelectProps {
 const LanguageSelect: React.FC<LanguageSelectProps> = ({label, selectedLanguage, onLanguageChange}) => {
   return (
     <Box mb={3}>
-    <label>{label}</label>
+    <FormLabel>{label}</FormLabel>
     <Select
        value={selectedLanguage}
        onChange={onLanguageChange}
