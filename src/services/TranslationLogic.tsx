@@ -42,14 +42,14 @@ const TranslationLogic: React.FC<TranslationProps> = ({
       }
     } catch (error) {
       console.error("Error translating text:", error);
-      setError("Error translating text"); // Set error message
+      setError("Both langauges cannot be the same"); // Set error message
       onTranslated(""); // Clear the translated text on error
     }
   };
 
   return (
     <Flex direction="column" align="center" justify="center">
-      <Button colorScheme="blue" onClick={handleTranslate}>
+      <Button colorScheme="blue" onClick={handleTranslate} mt={2}>
         Translate
       </Button>
       {error && <p style={{ color: "red" }}>{error}</p>}
