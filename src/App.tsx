@@ -13,6 +13,7 @@ import {
 } from "@chakra-ui/react";
 import TranslatedText from "./components/TranslatedText";
 import RefreshButton from "./components/RefreshButton";
+import Flashcards from "./components/Flashcards";
 
 const App: React.FC = () => {
   const [text, setText] = useState<string>(""); // user input text
@@ -66,7 +67,7 @@ const App: React.FC = () => {
         </Highlight>
       </Heading>
       {/* -x-x-x--x-End of Title-x-x-x-x-x- */}
-      <h1>part two</h1>
+      
       {/* App Container */}
       <Box
         mt="20px"
@@ -156,6 +157,14 @@ const App: React.FC = () => {
         {/* Refresh Button */}
         <RefreshButton onRefresh={handleRefresh} isLoading={isLoading} />
       </Box>
+
+        {/* Flashcard section */}
+        <Flex justifyContent="center" mt={8} wrap="wrap">
+        <Flashcards language="Spanish" translation={translatedText} />
+        <Flashcards language="French" translation={translatedText} />
+        <Flashcards language="German" translation={translatedText} />
+        <Flashcards language="Italian" translation={translatedText} />
+      </Flex>
     </>
   );
 };
