@@ -3,14 +3,7 @@ import TextInput from "./components/TextInput";
 import LanguageSelect from "./components/LanguageSelect";
 // import "./App.css";
 import TranslationLogic from "./services/TranslationLogic";
-import {
-  Box,
-  Flex,
-  Heading,
-  Highlight,
-  HStack,
-  Spacer,
-} from "@chakra-ui/react";
+import { Box, Flex, Heading, Highlight } from "@chakra-ui/react";
 import TranslatedText from "./components/TranslatedText";
 import RefreshButton from "./components/RefreshButton";
 import Flashcards from "./components/Flashcards";
@@ -21,7 +14,7 @@ const App: React.FC = () => {
   const [targetLang, setTargetLang] = useState<string>("es"); // set Target language to spanish
   const [translatedText, setTranslatedText] = useState<string>(""); // Translated Text
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [error, setError] = useState<string>(""); // Error state
+ 
 
   const handleTraslationResult = (translateText: string) => {
     setTranslatedText(translateText);
@@ -35,7 +28,7 @@ const App: React.FC = () => {
     setTranslatedText(""); // Clear the translated text
     setSourcelang("en"); // set lang to english
     setTargetLang("es"); // set target lang to spanish
-    setError("");
+    
 
     // Simulate a delay to mimic a loading process (you can replace this with your actual refresh logic)
     setTimeout(() => {
@@ -67,7 +60,7 @@ const App: React.FC = () => {
         </Highlight>
       </Heading>
       {/* -x-x-x--x-End of Title-x-x-x-x-x- */}
-      
+
       {/* App Container */}
       <Box
         mt="20px"
@@ -80,7 +73,7 @@ const App: React.FC = () => {
         // minWidth="100px"
         width="100%"
         maxWidth={{ base: "100%", md: "600px" }} // Full width on small screens, max of 620px on medium+larger
-        minHeight={{ base: "200px", md: "300px" }} // 200px on small screens, 300px on medium+larger
+        minHeight={{ base: "100px", md: "200px" }} // 200px on small screens, 300px on medium+larger
         margin="0 auto" // Center the Box
         color="black" //Ensure text is visible (adjust as needed)
       >
@@ -158,13 +151,16 @@ const App: React.FC = () => {
         <RefreshButton onRefresh={handleRefresh} isLoading={isLoading} />
       </Box>
 
-        {/* Flashcard section */}
+      {/* Flashcard section */}
+      <Box borderWidth={1} borderColor="Black">
         <Flex justifyContent="center" mt={8} wrap="wrap">
-        <Flashcards language="Spanish" translation={translatedText} />
-        <Flashcards language="French" translation={translatedText} />
-        <Flashcards language="German" translation={translatedText} />
-        <Flashcards language="Italian" translation={translatedText} />
-      </Flex>
+          <Flashcards language="English" translation={translatedText} />
+          <Flashcards language="Spanish" translation={translatedText} />
+          <Flashcards language="French" translation={translatedText} />
+          <Flashcards language="German" translation={translatedText} />
+          <Flashcards language="Italian" translation={translatedText} />
+        </Flex>
+      </Box>
     </>
   );
 };
