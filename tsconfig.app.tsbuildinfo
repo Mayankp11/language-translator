@@ -1,0 +1,1 @@
+{"root":["./src/app.tsx","./src/main.tsx","./src/theme.ts","./src/vite-env.d.ts","./src/components/appbackground.tsx","./src/components/languageselect.tsx","./src/components/refreshbutton.tsx","./src/components/textinput.tsx","./src/components/translatedtext.tsx","./src/services/translationlogic.tsx"],"version":"5.6.2"}

@@ -16,8 +16,10 @@ const TextInput: React.FC<TextInputProps> = ({ text, onTextChange }) => {
       borderWidth="1px"
       placeholder="Enter text to translate..."
       borderRadius="4px"
-      height="100%"
       resize="none"
+      height={{ base: "120px", md: "100%" }} // Height for smaller screens
+      width={{ base: "100%", md: "250px" }} // Width responsive on small screens
+      p={{ base: 2, md: 4 }} // Padding adjustments for smaller screens
     //   _placeholder={{ color: "gray.400" }}
     //   _focus={{ borderColor: "black", boxShadow: "none" }} // Keep black border on focus and remove default box shadow
     //   _hover={{ borderColor: "black" }} // Keep border color black on hover

@@ -1,104 +1,85 @@
 import React, { useState } from "react";
 import TextInput from "./components/TextInput";
 import LanguageSelect from "./components/LanguageSelect";
-// import "./App.css";
 import TranslationLogic from "./services/TranslationLogic";
-import {
-  Box,
-  Flex,
-  Heading,
-  Highlight,
-
-} from "@chakra-ui/react";
+import { Box, Flex, Heading, Highlight, Text } from "@chakra-ui/react";
 import TranslatedText from "./components/TranslatedText";
 import RefreshButton from "./components/RefreshButton";
 import AppBackground from "./components/AppBackground";
 
-
 const App: React.FC = () => {
-  const [text, setText] = useState<string>(""); // user input text
-  const [sourceLang, setSourceLang] = useState<string>("en"); // set Source language to english
-  const [targetLang, setTargetLang] = useState<string>("es"); // set Target language to spanish
-  const [translatedText, setTranslatedText] = useState<string>(""); // Translated Text
+  const [text, setText] = useState<string>("");
+  const [sourceLang, setSourceLang] = useState<string>("en");
+  const [targetLang, setTargetLang] = useState<string>("es");
+  const [translatedText, setTranslatedText] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [error, setError] = useState<string>(""); // Error state
+  const [error, setError] = useState<string>("");
 
   const handleTraslationResult = (translateText: string) => {
     setTranslatedText(translateText);
+    setError(""); // Clear any previous error if translation is successful
   };
 
-  // Function to handle refresh action
   const handleRefresh = () => {
-    setIsLoading(true); // Set loading state to true
-    // Simulate a refresh action (e.g., clearing text or re-fetching data)
-    setText(""); // Example action: clearing the input text
-    setTranslatedText(""); // Clear the translated text
-    setSourceLang("en"); // set lang to english
-    setTargetLang("es"); // set target lang to spanish
-    setError('');
+    setIsLoading(true);
+    setText("");
+    setTranslatedText("");
+    setSourceLang("en");
+    setTargetLang("es");
+    setError(""); // Clear error on refresh
 
-    // Simulate a delay to mimic a loading process (you can replace this with your actual refresh logic)
     setTimeout(() => {
-      setIsLoading(false); // Set loading state back to false after refresh action
-    }, 500); // Adjust delay as needed
+      setIsLoading(false);
+    }, 500);
   };
 
   return (
-  
     <>
-    <AppBackground/>
-    {/* Title */}
-      <Heading
-        as="h1"
-        size="4xl"
-        // noOfLines={1}
-        textAlign="center"
-        mb={5}
-        mt={7}
-      >
+      <AppBackground />
+      <Heading as="h1" size="4xl" textAlign="center" mb={5} mt={7}>
         <Highlight
           query="Mate"
           styles={{
-            px: "2", // Horizontal padding
-            py: "1", // Vertical padding
-            rounded: "full", // Fully rounded corners
-            bg: "green.100", // Background color
+            px: "2",
+            py: "1",
+            rounded: "full",
+            bg: "green.100",
           }}
         >
           TranslateMate
         </Highlight>
       </Heading>
-      {/* -x-x-x--x-End of Title-x-x-x-x-x- */}
 
-      {/* App Container */}
       <Box
-      mt="20px"
-        p={{ base: 2, md: 4 }} // Padding: 2 on small screens, 4 on medium and larger
-        bg="#f0f8ff" // Light gray background
-        borderRadius="md" // Rounded corners
-        borderWidth={1} // Side border width
-        borderColor="black" // Border color
-        boxShadow="md" // Add a shadow
-        // minWidth="100px"
+        mt="40px"
+        p={{ base: 2, md: 4 }}
+        bg="#f0f8ff"
+        borderRadius="md"
+        borderWidth={1}
+        borderColor="black"
+        boxShadow="md"
         width="100%"
-        maxWidth={{ base: "100%", md: "600px" }} // Full width on small screens, max of 620px on medium+larger
-        minHeight={{ base: "200px", md: "300px" }} // 200px on small screens, 300px on medium+larger
-        margin="0 auto" // Center the Box
-        color="black" //Ensure text is visible (adjust as needed)
+        maxWidth={{ base: "100%", md: "600px" }}
+        minHeight={{ base: "200px", md: "300px" }}
+        margin="0 auto"
+        color="black"
       >
+        {error && (
+          <Box bg="red.200" p={2} borderRadius="md" mb={4}>
+            <Text color="red.800">{error}</Text>
+          </Box>
+        )}
 
-        {/* Main Flex container to hold all four logics */}
         <Flex
-          direction={{ base: "column", md: "row" }} // Stack vertically on small screens, horizontally on medium+
-          mb={{ base: 0, md: 0 }}
+          direction={{ base: "column", md: "row" }}
           alignItems="stretch"
-          justify="space-between" // Ensure space between items
+          justify="space-between"
           mt={5}
+          mb={{ base: 2, md: 0 }}
         >
-          {/* Select from and Input Text felx container */}
-          <Flex direction="column" flex={1}  mr={{ base: 0, md: 4 }}>
-            {/* Box for the "Translate from" label */}
-            <Box mb={1} flex="1"  width={{ base: "100%", md: "150px" }}>
+          {/* Select from and Input Text flex container */}
+          <Flex direction="column" flex={1} mr={{ base: 0, md: 4 }} mb={{ base: 2, md: 0 }}>
+            <Box mb={1} flex="1" width={{ base: "100%", md: "150px" }}>
               <LanguageSelect
                 label="Translate from:"
                 selectedLanguage={sourceLang}
@@ -106,30 +87,21 @@ const App: React.FC = () => {
               />
             </Box>
 
-            {/* Box for the Text Input */}
             <Box
               mb={1}
               flex="2"
-              width={{ base: "100%", md: "250px" }} // Full width on small screens, 250px on medium+
-              minHeight="300px"
+              width={{ base: "100%", md: "250px" }}
+              minHeight={{ base: "200px", md: "300px" }} // Reduced height for smaller screens
               boxSizing="border-box"
-              // border="1px solid black"  /* Add border here */
-              // p={2}  /* Add padding */
             >
-              <TextInput
-                text={text}
-                onTextChange={(e) => setText(e.target.value)}
-              />
+              <TextInput text={text} onTextChange={(e) => setText(e.target.value)} />
             </Box>
           </Flex>
-        {/*End of Select from and Input Text felx container */}
 
+          <Box mx={{ base: 0, md: 4 }} />
 
-          <Box mx={{ base: 0, md: 4 }} /> {/* Responsive margin: 0 on small screens, 4 on medium+ */}
-
-             {/* Translate to and Translated text felx container */}
-          <Flex direction="column" flex={1}  >
-            {/* Box for the "Translate to" label */}
+          {/* Translate to and Translated text flex container */}
+          <Flex direction="column" flex={1} mb={{ base: 2, md: 0 }}>
             <Box mb={1} flex="1" width={{ base: "100%", md: "150px" }}>
               <LanguageSelect
                 label="Translate to:"
@@ -138,30 +110,26 @@ const App: React.FC = () => {
               />
             </Box>
 
-            {/* Box for the Translated Text */}
             <Box
               flex="2"
-              width={{ base: "100%", md: "250px" }} // Full width on small screens, 250px on medium+
-              minHeight="300px"
+              width={{ base: "100%", md: "250px" }}
+              minHeight={{ base: "200px", md: "300px" }} // Reduced height for smaller screens
               boxSizing="border-box"
             >
               <TranslatedText translatedText={translatedText} />
             </Box>
           </Flex>
         </Flex>
-        {/* End of Translate to and Translated text felx container */}
 
-        {/* Translation Logic */}
         <TranslationLogic
           text={text}
           sourceLang={sourceLang}
           targetLang={targetLang}
           onTranslated={handleTraslationResult}
+          onError={(errorMsg) => setError(errorMsg)} // Set error if translation fails
         />
-        
-        {/* Refresh Button */}
-        <RefreshButton onRefresh={handleRefresh} isLoading={isLoading} 
-        />
+
+        <RefreshButton onRefresh={handleRefresh} isLoading={isLoading} />
       </Box>
     </>
   );
