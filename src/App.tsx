@@ -8,15 +8,16 @@ import {
   Flex,
   Heading,
   Highlight,
-  HStack,
-  Spacer,
+
 } from "@chakra-ui/react";
 import TranslatedText from "./components/TranslatedText";
 import RefreshButton from "./components/RefreshButton";
+import AppBackground from "./components/AppBackground";
+
 
 const App: React.FC = () => {
   const [text, setText] = useState<string>(""); // user input text
-  const [sourceLang, setSourcelang] = useState<string>("en"); // set Source language to english
+  const [sourceLang, setSourceLang] = useState<string>("en"); // set Source language to english
   const [targetLang, setTargetLang] = useState<string>("es"); // set Target language to spanish
   const [translatedText, setTranslatedText] = useState<string>(""); // Translated Text
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -32,7 +33,7 @@ const App: React.FC = () => {
     // Simulate a refresh action (e.g., clearing text or re-fetching data)
     setText(""); // Example action: clearing the input text
     setTranslatedText(""); // Clear the translated text
-    setSourcelang("en"); // set lang to english
+    setSourceLang("en"); // set lang to english
     setTargetLang("es"); // set target lang to spanish
     setError('');
 
@@ -43,7 +44,9 @@ const App: React.FC = () => {
   };
 
   return (
+  
     <>
+    <AppBackground/>
     {/* Title */}
       <Heading
         as="h1"
@@ -99,7 +102,7 @@ const App: React.FC = () => {
               <LanguageSelect
                 label="Translate from:"
                 selectedLanguage={sourceLang}
-                onLanguageChange={(e) => setSourcelang(e.target.value)}
+                onLanguageChange={(e) => setSourceLang(e.target.value)}
               />
             </Box>
 
