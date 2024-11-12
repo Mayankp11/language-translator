@@ -75,7 +75,7 @@ const App: React.FC = () => {
           alignItems="stretch"
           justify="space-between"
           mt={5}
-          mb={{ base: 2, md: 0 }}
+          mb={{ base: 2, md: 0 }} //
         >
           {/* Select from and Input Text flex container */}
           <Flex direction="column" flex={1} mr={{ base: 0, md: 4 }} mb={{ base: 2, md: 0 }}>
