@@ -75,9 +75,8 @@ const App: React.FC = () => {
           alignItems="stretch"
           justify="space-between"
           mt={5}
-          mb={{ base: 2, md: 0 }} //
+          mb={{ base: 2, md: 0 }}
         >
-          {/* Select from and Input Text flex container */}
           <Flex direction="column" flex={1} mr={{ base: 0, md: 4 }} mb={{ base: 2, md: 0 }}>
             <Box mb={1} flex="1" width={{ base: "100%", md: "150px" }}>
               <LanguageSelect
@@ -91,7 +90,7 @@ const App: React.FC = () => {
               mb={1}
               flex="2"
               width={{ base: "100%", md: "250px" }}
-              minHeight={{ base: "200px", md: "300px" }} // Reduced height for smaller screens
+              minHeight={{ base: "200px", md: "300px" }}
               boxSizing="border-box"
             >
               <TextInput text={text} onTextChange={(e) => setText(e.target.value)} />
@@ -100,7 +99,6 @@ const App: React.FC = () => {
 
           <Box mx={{ base: 0, md: 4 }} />
 
-          {/* Translate to and Translated text flex container */}
           <Flex direction="column" flex={1} mb={{ base: 2, md: 0 }}>
             <Box mb={1} flex="1" width={{ base: "100%", md: "150px" }}>
               <LanguageSelect
@@ -113,7 +111,7 @@ const App: React.FC = () => {
             <Box
               flex="2"
               width={{ base: "100%", md: "250px" }}
-              minHeight={{ base: "200px", md: "300px" }} // Reduced height for smaller screens
+              minHeight={{ base: "200px", md: "300px" }}
               boxSizing="border-box"
             >
               <TranslatedText translatedText={translatedText} />
@@ -121,6 +119,8 @@ const App: React.FC = () => {
           </Flex>
         </Flex>
 
+
+        {/* Translation Logic */}
         <TranslationLogic
           text={text}
           sourceLang={sourceLang}
