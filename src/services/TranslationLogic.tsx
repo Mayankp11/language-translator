@@ -43,7 +43,7 @@ const TranslationLogic: React.FC<TranslationProps> = ({
       }
     } catch (error) {
       console.error("Error translating text:", error);
-      const errorMessage = "Both languages cannot be the same";  // Customize error message
+      const errorMessage = "Error Translating ";  // Customize error message
       setError(errorMessage);
       onError(errorMessage);  // Pass error to parent via onError prop
       onTranslated(""); // Clear the translated text on error
