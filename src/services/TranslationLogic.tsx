@@ -7,7 +7,7 @@ interface TranslationProps {
   sourceLang: string;
   targetLang: string;
   onTranslated: (translatedText: string) => void;
-  onError: (errorMsg: string) => void;  // Add the onError prop
+  onError: (errorMsg: string) => void;
 }
 
 const TranslationLogic: React.FC<TranslationProps> = ({
@@ -15,13 +15,29 @@ const TranslationLogic: React.FC<TranslationProps> = ({
   sourceLang,
   targetLang,
   onTranslated,
-  onError,  // Destructure the onError prop
+  onError,
 }) => {
   const [error, setError] = useState<string | null>(null);
 
   const handleTranslate = async () => {
-    const apiKey = import.meta.env.VITE_GOOGLE_API_KEY; // Replace with actual API key
+    const apiKey = import.meta.env.VITE_GOOGLE_API_KEY;
     const url = `https://translation.googleapis.com/language/translate/v2?key=${apiKey}`;
+
+    if (!apiKey) {
+      const errorMessage = "Error translating text: API key missing";
+      setError(errorMessage);
+      onError(errorMessage);
+      onTranslated(""); // Clear the translated text on error
+      return;
+    }
+
+    if (sourceLang === targetLang) {
+      const errorMessage = "Both languages cannot be the same";
+      setError(errorMessage);
+      onError(errorMessage);
+      onTranslated(""); // Clear the translated text if no translation is possible
+      return;
+    }
 
     try {
       const response = await axios.post(url, {
@@ -38,14 +54,14 @@ const TranslationLogic: React.FC<TranslationProps> = ({
       } else {
         const errorMessage = "No translations available";
         setError(errorMessage);
-        onError(errorMessage);  // Pass error to parent via onError prop
+        onError(errorMessage);
         onTranslated(""); // Clear translation if no result
       }
     } catch (error) {
       console.error("Error translating text:", error);
-      const errorMessage = "Error Translating ";  // Customize error message
+      const errorMessage = "Error translating text";
       setError(errorMessage);
-      onError(errorMessage);  // Pass error to parent via onError prop
+      onError(errorMessage);
       onTranslated(""); // Clear the translated text on error
     }
   };
@@ -55,7 +71,7 @@ const TranslationLogic: React.FC<TranslationProps> = ({
       <Button colorScheme="blue" onClick={handleTranslate} mt={2}>
         Translate
       </Button>
-      {error && <p style={{ color: "red" }}>{error}</p>}  {/* Local error display */}
+      {error && <p style={{ color: "red" }}>{error}</p>}
     </Flex>
   );
 };
