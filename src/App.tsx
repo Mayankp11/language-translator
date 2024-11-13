@@ -64,7 +64,7 @@ const App: React.FC = () => {
               bg: "green.100",
             }}
           >
-            TranslateMaybe
+            TranslateMate
           </Highlight>
         </Heading>
       </Box>
