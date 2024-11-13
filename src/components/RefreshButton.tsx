@@ -1,30 +1,27 @@
-import { Button } from "@chakra-ui/react";
+import { RepeatIcon } from "@chakra-ui/icons";
+import { IconButton } from "@chakra-ui/react";
 import React from "react";
 
-
-interface refreshProps {
-    onRefresh : () => void;
-    isLoading : boolean;
+interface RefreshProps {
+  onRefresh: () => void;
+  isLoading: boolean;
 }
 
-export const RefreshButton : React.FC<refreshProps> = ({onRefresh, isLoading}) => {
+export const RefreshButton: React.FC<RefreshProps> = ({
+  onRefresh,
+  isLoading,
+}) => {
   return (
-    <Button
-    onClick={onRefresh} // Call the refresh function when clicked
+    <IconButton
+      icon={<RepeatIcon />} // Render RepeatIcon as an element
+      onClick={onRefresh} // Call the refresh function when clicked
       isLoading={isLoading} // Display loading state
-      loadingText="Refreshing" // Text to display while loading
+      aria-label="Refresh" // Accessibility label
       colorScheme="teal" // Set color scheme
       variant="outline" // Outline variant
-      spinnerPlacement="start" // Position the spinner at the start
       mt={4} // Margin top for spacing
-    >
-        Refresh
-    </Button>
-
-    
-    
-  )
-
-}
+    />
+  );
+};
 
 export default RefreshButton;

@@ -1,4 +1,3 @@
-// AppBackground.tsx
 import { Box } from "@chakra-ui/react";
 import { keyframes } from "@emotion/react";
 import React from "react";
@@ -14,9 +13,9 @@ const gradientAnimation = keyframes`
 const AppBackground: React.FC = () => {
   return (
     <Box
-      w="100vw"
-      h="100vh"
-       bgGradient="linear-gradient(270deg, #ff7e5f, #feb47b, #86a8e7, #91eae4, #fcb045, #fd1d1d, #833ab4, #00c6ff)"
+      w="100vw"  // Full viewport width
+      h="100vh"  // Full viewport height
+      bgGradient="linear-gradient(270deg, #ff7e5f, #feb47b, #86a8e7, #91eae4, #fcb045, #fd1d1d, #833ab4, #00c6ff)"  // Multi-color gradient
       bgSize="400% 400%"  // Creates a large area for gradient transition
       animation={`${gradientAnimation} 10s ease infinite`} // Set animation duration and easing
       position="fixed"    // Position it to cover the whole screen
